@@ -67,7 +67,39 @@ public class ControladorVideojuego extends HttpServlet {
 			
 			
 		}else if(operacion.equals("editar")) {
+			int idEditar = Integer.parseInt(request.getParameter("id"));
+			System.out.println("Mostrando datos del videojuego con id" + idEditar);
+			Videojuego videojuego = videojuegosDAO.obtenerVideojuegoPorId(idEditar);
+			request.setAttribute("videojuego", videojuego);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/videojuego_editar.jsp");
+			rd.forward(request, response);
 			
+			
+			
+		}else if(operacion.equals("guardar-cambios")) {
+			Videojuego vNuevo = new Videojuego();
+			int id = Integer.parseInt(request.getParameter("id"));
+			vNuevo.setNombre(request.getParameter("nombre"));
+			vNuevo.setDescripcion(request.getParameter("descripcion"));
+			vNuevo.setGenero(request.getParameter("genero"));
+			vNuevo.setPlataformas(request.getParameter("plataformas"));
+			
+			String fechaLanzamientoStr = request.getParameter("fechaLanzamiento");
+			try {
+			    Date fechaLanzamiento = Date.valueOf(fechaLanzamientoStr); // Convierte la cadena en java.sql.Date
+			    vNuevo.setFechaLanzamiento(fechaLanzamiento);
+			} catch (IllegalArgumentException e) {
+			    System.out.println("[-] Error en el casteo de la fecha en la operacion editar (ControladorVideojuego.java)");
+			    e.printStackTrace();
+			}
+			vNuevo.setDesarrollador(request.getParameter("desarrollador"));
+			vNuevo.setPuntuacion(Double.parseDouble(request.getParameter("puntuacion")));
+			vNuevo.setPrecio(Double.parseDouble(request.getParameter("precio")));
+
+			
+			System.out.println("[i] Id del videojuego a modificar: " + id);
+			videojuegosDAO.modificarVideojuego(vNuevo, id);
+			mostrarListadoVideojuegos(videojuegosDAO, request, response);
 		}
 		
 	} // end service()

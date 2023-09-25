@@ -17,7 +17,7 @@
 		Nombre: <input name="nombre" type="text"/><br>
 		Descripcion: <textarea rows="3" columns="20" name="descripcion"></textarea><br>
 		Genero: <input name="genero" type="text" /><br>
-		Plataforma: <input name="plataforma" type="text"/><br>
+		Plataforma: <input name="plataformas" type="text"/><br>
 		Fecha de Lanzamiento: <input type="date" name="fechaLanzamiento"><br>
 		Desarrollador: <input type="text" name="desarrollador"><br>
 		Puntuacion: <input name="puntuacion" type="number" step="any"/><br>
