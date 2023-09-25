@@ -63,7 +63,10 @@ public class ControladorVideojuego extends HttpServlet {
 			
 			
 		}else if(operacion.equals("borrar")) {
-			
+			int idBorrar = Integer.parseInt(request.getParameter("id"));
+			System.out.println("Eliminando videojuego con id" + idBorrar);
+			videojuegosDAO.borrarVideojuego(idBorrar);
+			mostrarListadoVideojuegos(videojuegosDAO, request, response);
 			
 			
 		}else if(operacion.equals("editar")) {
@@ -100,7 +103,7 @@ public class ControladorVideojuego extends HttpServlet {
 			System.out.println("[i] Id del videojuego a modificar: " + id);
 			videojuegosDAO.modificarVideojuego(vNuevo, id);
 			mostrarListadoVideojuegos(videojuegosDAO, request, response);
-		}
+		} // end guardar-datos 
 		
 	} // end service()
 	

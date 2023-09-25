@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Editar Videojuego</title>
 </head>
 <body>
 
@@ -22,7 +22,7 @@
 		Plataformas: <input name="plataformas" type="text" value ="${videojuego.plataformas}"/><br>
 		Fecha de Lanzamiento: <input type="date" name="fechaLanzamiento" value ="${videojuego.fechaLanzamiento}"><br>
 		Desarrollador: <input type="text" name="desarrollador" value ="${videojuego.desarrollador}"><br>
-		Puntuacion: <input name="puntuacion" type="number" step="any" value ="${videojuego.puntuacion}"/><br>
+		Puntuacion: <input name="puntuacion" type="number" step=".01" value ="${videojuego.puntuacion}"/><br>
 		Precio: <input name="precio" type="number" step="any" value ="${videojuego.precio}"/><br>
 		
 		

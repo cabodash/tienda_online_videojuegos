@@ -24,7 +24,7 @@ public class VideojuegosDAO_IMPL extends MasterDAO implements VideojuegosDAO {
 			ps.setString(1, v.getNombre());
 			ps.setString(2, v.getDescripcion());
 			ps.setString(3, v.getGenero());
-			ps.setString(4, v.getNombre());
+			ps.setString(4, v.getPlataformas());
 			ps.setDate(5, v.getFechaLanzamiento());
 			ps.setString(6, v.getDesarrollador());
 			ps.setDouble(7, v.getPuntuacion());
@@ -76,8 +76,9 @@ public class VideojuegosDAO_IMPL extends MasterDAO implements VideojuegosDAO {
 		conectar();
 		Videojuego videojuego = new Videojuego();
 		try {
-			Statement st = this.conexion.createStatement();
-			ResultSet rs = st.executeQuery(ConstantesSQL.SQL_OBTENER_VIDEOJUEGO);
+			PreparedStatement ps = conexion.prepareStatement(ConstantesSQL.SQL_OBTENER_VIDEOJUEGO_POR_ID);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
 				videojuego = new Videojuego(
 					rs.getInt("id"),
@@ -101,13 +102,45 @@ public class VideojuegosDAO_IMPL extends MasterDAO implements VideojuegosDAO {
 
 	@Override
 	public void modificarVideojuego(Videojuego v, int id) {
-		
+		conectar();
+		try {
+			PreparedStatement ps = this.conexion.prepareStatement(ConstantesSQL.SQL_MODIFICAR_VIDEOJUEGO_POR_ID);
+			
+			//
+			ps.setString(1, v.getNombre());
+			ps.setString(2, v.getDescripcion());
+			ps.setString(3, v.getGenero());
+			ps.setString(4, v.getPlataformas());
+			ps.setDate(5, v.getFechaLanzamiento());
+			ps.setString(6, v.getDesarrollador());
+			ps.setDouble(7, v.getPuntuacion());
+			ps.setDouble(8, v.getPrecio());
+			ps.setInt(9, id);
+			
+			ps.execute();
+			desconectar();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("[-] Error al preparar el Statement en registrarVideoJuego() (VideojuegosDAO_IMPL.java)");
+			System.out.println(e);
+		}
 		
 	}
 
 	@Override
 	public void borrarVideojuego(int id) {
-		// TODO Auto-generated method stub
+		conectar();
+		try {
+			PreparedStatement ps = conexion.prepareStatement(ConstantesSQL.SQL_BORRAR_VIDEOJUEGO_POR_ID);
+			ps.setInt(1, id);
+			ps.execute();
+			desconectar();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("[-] Error al borrar videojuego  (VideojuegosDAO_IMPL.java)");
+			e.printStackTrace();
+		}
+		
 		
 	}
 

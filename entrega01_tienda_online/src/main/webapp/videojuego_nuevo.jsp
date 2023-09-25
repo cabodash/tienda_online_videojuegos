@@ -21,7 +21,7 @@
 		Fecha de Lanzamiento: <input type="date" name="fechaLanzamiento"><br>
 		Desarrollador: <input type="text" name="desarrollador"><br>
 		Puntuacion: <input name="puntuacion" type="number" step="any"/><br>
-		Precio: <input name="precio" type="number" step="any"/><br>
+		Precio: <input name="precio" type="number" step=".01"/><br>
 		
 		
 		<input type="submit" value="Registrar Nuevo Videojuego">
