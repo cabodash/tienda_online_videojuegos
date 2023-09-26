@@ -17,7 +17,15 @@
 		Nombre: <input name="nombre" type="text"/><br>
 		Descripcion: <textarea rows="3" columns="20" name="descripcion"></textarea><br>
 		Genero: <input name="genero" type="text" /><br>
-		Plataforma: <input name="plataformas" type="text"/><br>
+		Plataforma: <select name="plataforma">
+	        <option value="pc">PC</option>
+	        <option value="playstation4">PlayStation 4</option>
+	        <option value="playstation5">PlayStation 5</option>
+	        <option value="xboxone">Xbox One</option>
+	        <option value="xboxseriesx">Xbox Series X</option>
+	        <option value="nintendoswitch">Nintendo Switch</option>
+	        <option value="otro">Otro</option>
+   		</select> <br>
 		Fecha de Lanzamiento: <input type="date" name="fechaLanzamiento"><br>
 		Desarrollador: <input type="text" name="desarrollador"><br>
 		Puntuacion: <input name="puntuacion" type="number" step="any"/><br>
