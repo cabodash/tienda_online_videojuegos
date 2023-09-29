@@ -25,31 +25,11 @@ public class VideojuegosDAO_IMPL extends MasterDAO implements VideojuegosDAO {
 	private static SimpleJdbcInsert simpleInsert;
 	private static JdbcTemplate jdbcTemplate;
 
-	public void setDsLibrosDAO(DataSource dsVideojuegosDAO) {
+	public void setDsVideojuegosDAO(DataSource dsVideojuegosDAO) {
 
-		// Vamos a usar Spring jdbc:
-		/*
-		 * Hace falta: una bean Datasource con los datos de la conexión -> (ya definida
-		 * en el applicationContext.xml)
-		 */
-		// Hacen falta las librerias de Spring
-		// Hace falta tener bien configurados los archivos web.xml y
-		// applicationContext.xml
-
-		// Como uso Spring jdbc:
-		// El DAO_IMPL debe recibir el datasource para usarlo en sus operaciones
-		// Eso lo hacemos indicando en el xml lo siguiente:
-		/*
-		 * <bean class="DAOs_IMPL.LibrosDAO_IMPL"> <property name="dsLibrosDAO"
-		 * ref="dataSource"/> </bean>
-		 */
-		// Con lo indicado se ejecuta el setDsLibrosDAO el cual recibe el dataSource
-		// Y ya podemos preparar ciertos recursos:
 		this.simpleInsert = new SimpleJdbcInsert(dsVideojuegosDAO);
-		this.simpleInsert.withTableName("tabla_videojuegos");
+		this.simpleInsert.withTableName("videojuego");
 
-		// Vamos a preparar otro recurso de spring que nos va a ayudar con el resto de
-		// consultas
 		this.jdbcTemplate = new JdbcTemplate(dsVideojuegosDAO);
 
 		this.dsVideojuegosDAO = dsVideojuegosDAO;
