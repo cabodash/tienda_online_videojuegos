@@ -17,7 +17,7 @@
 	<form action="${pageContext.servletContext.contextPath}/videojuegos/guardar-cambios" method="post">
 		<input name="id" type="hidden" value ="${videojuego.id}"/><br>
 		Nombre: <input name="nombre" type="text" value ="${videojuego.nombre}"/><br>
-		Descripcion: <textarea rows="3" columns="20" name="descripcion" >${videojuego.descripcion}</textarea><br>
+		Descripcion: <textarea rows="3" cols="20" name="descripcion" >${videojuego.descripcion}</textarea><br>
 		Genero: <input name="genero" type="text" value ="${videojuego.genero}"/><br>
 		Plataformas: <input name="plataformas" type="text" value ="${videojuego.plataformas}"/><br>
 		Fecha de Lanzamiento: <input type="date" name="fechaLanzamiento" value ="${videojuego.fechaLanzamiento}"><br>

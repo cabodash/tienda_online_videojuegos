@@ -15,7 +15,7 @@
 	
 	<form action="videojuegos/nuevo" method="post">
 		Nombre: <input name="nombre" type="text"/><br>
-		Descripcion: <textarea rows="3" columns="20" name="descripcion"></textarea><br>
+		Descripcion: <textarea rows="3" cols="20" name="descripcion"></textarea><br>
 		Genero: <input name="genero" type="text" /><br>
 		Plataforma: <select name="plataforma">
 	        <option value="pc">PC</option>
